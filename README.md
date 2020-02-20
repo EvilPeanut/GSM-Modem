@@ -35,3 +35,29 @@ The method returns a string-indexed array. The keys are `datetime`, `latitude`, 
 
 ### httpInit
 The method only needs to be called once to initialize parameters for future HTTP interactions. The modem is configured to use Vodaphone UK's configuration; this can be easily changed via the modem code
+
+## Examples
+The below example opens a serial connection to the modem via `COM3`, prints an echo response from the modem, prints the current call signal quality, turns the GNSS/GPS on and then prints the GNSS/GPS data to the console every 60 seconds
+
+```
+def main():
+	modem = GSMModem('COM3')
+
+	print("Echo = " + modem.getEcho())
+	print("CSQ = " + modem.getCSQ())
+
+	time.sleep(1)
+
+	modem.setGPSOn()
+
+	while True:
+		gps = modem.getGPSData()
+
+		print("GPS Data = " + str(gps))
+
+		time.sleep(60)
+
+
+if __name__ == '__main__':
+	main()
+```
