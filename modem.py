@@ -186,9 +186,6 @@ class GSMModem:
 	GPRS Init
 	"""
 	def httpInit(self):
-		"""
-		Init commands (move these)
-		"""
 		self.write(b'AT+HTTPPARA="CID",1\r')
 
 		time.sleep(1)
@@ -215,6 +212,3 @@ class GSMModem:
 		time.sleep(1)
 
 		self.write(b'AT+SAPBR=1,1\r')
-		"""
-		End of init commands
-		"""
